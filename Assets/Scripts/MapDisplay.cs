@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MapDisplay : MonoBehaviour {
 
@@ -13,8 +11,8 @@ public class MapDisplay : MonoBehaviour {
         this.textureRenderer.transform.localScale = new Vector3(texture.width, 1, texture.height);
     }
 
-    public void DrawMesh(MeshData meshData, Texture2D texture) {
+    public void DrawMesh(MeshData meshData) {
         this.meshFilter.sharedMesh = meshData.CreateMesh();
-        this.meshRenderer.sharedMaterial.mainTexture = texture;
+        this.meshFilter.transform.localScale = Vector3.one * FindObjectOfType<MapGenerator>().terrainData.uniformScale;
     }
 }
